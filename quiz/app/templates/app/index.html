@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/index.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <title>Hello, world!</title>
+</head>
+
+<body>
+{% if user.is_authenticated %}
+<h2>{{user_profile.0.score}} </h2>   
+    <form action="/" onSubmit="return checkform()">
+        <div class="container">
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-8  mx-auto border rounded" style="margin-top: 200px">
+                    <span style="padding: 10px;">{{questions.0.question}}</span>
+                    <div class="form-check mt-3 ml-3 hover_effect animated slideInLeft">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                          {{questions.0.a1}}
+                        </label>
+                    </div>
+                    <div class="form-check ml-3 hover_effect animated slideInLeft delay-1s">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                        <label class="form-check-label" for="exampleRadios2">
+                            {{questions.0.a2}}
+                        </label>
+                    </div>
+                    <div class="form-check ml-3 hover_effect animated slideInLeft delay-2s">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+                        <label class="form-check-label" for="exampleRadios3">
+                            {{questions.0.a3}}
+                            </label>
+                    </div>
+                    <div class="form-check ml-3 hover_effect animated slideInLeft delay-3s">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option4">
+                        <label class="form-check-label" for="exampleRadios4">
+                            {{questions.0.a4}}
+                                </label>
+                    </div>
+                    <div class="container">
+                        <button type="submit" class="btn btn-dark" style="margin-left: 80%;margin-bottom:10px">Next</button>
+
+                    </div>
+                </div>
+                <div class="col-2"></div>
+
+            </div>
+        </div>
+    </form>
+{% else %}
+    <h2>Please log in first...</h2>
+{% endif %}
+    <script>
+        function checkform() {
+
+            var ele = document.getElementsByName('exampleRadios');
+            var name = "{{questions.0.c}}"
+            temp = "option"
+            final = temp.concat(name)
+            console.log(final);
+            for(i = 0; i < ele.length; i++) { 
+                if(ele[i].checked) {
+                    if(ele[i].value == final){
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
+                // console.log(ele[i].value); 
+            } }
+
+            
+
+        }
+    </script>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+body {
+    background-color: #010101;
+    color: white;
+    font-size: 20px;
+}
+
+.mt-5 {
+    margin-top: 400px;
+}
+
+.hover_effect:hover {
+    background-color: #0A79DF;
+}
